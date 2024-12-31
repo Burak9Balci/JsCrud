@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .round {
+        width: 50px;
+        height: 50px;
+        background-color: grey;
+        border: 5px solid black;
+        border-radius: 100%;
+      }
+      #clip {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center; /* İçerik hizalaması */
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      #fire {
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="text"></h1>
+    <div id="clip">
+      <div class="round"></div>
+      <div class="round"></div>
+      <div class="round"></div>
+      <div class="round"></div>
+      <div class="round"></div>
+      <div class="round"></div>
+    </div>
+    <button id="fire">Fire</button>
+    <script>
+      const btn = document.getElementById("fire");
+      const rounds = document.querySelectorAll("#clip .round");
+      let roundIndex = 0;
+      let clip = 6;
+
+      btn.addEventListener("click", () => {
+        let fireChange = Math.random();
+        if (fireChange > 0.16 && clip === 6) {
+          rounds[roundIndex].style.backgroundColor = "white";
+          roundIndex++;
+          clip--;
+        } else if (fireChange > 0.2 && clip === 5) {
+          rounds[roundIndex].style.backgroundColor = "white";
+          roundIndex++;
+          clip--;
+        } else if (fireChange > 0.25 && clip === 4) {
+          rounds[roundIndex].style.backgroundColor = "white";
+          roundIndex++;
+          clip--;
+        } else if (fireChange > 0.33 && clip === 3) {
+          rounds[roundIndex].style.backgroundColor = "white";
+          roundIndex++;
+          clip--;
+        } else if (fireChange > 0.5 && clip === 2) {
+          rounds[roundIndex].style.backgroundColor = "white";
+          roundIndex++;
+          clip--;
+        } else {
+          rounds[roundIndex].style.backgroundColor = "red";
+          btn.style.display = "none";
+          text.textContent =
+            roundIndex % 2 === 0 ? "Gamer 1 is dead" : "Gamer 2 is dead";
+        }
+      });
+    </script>
+  </body>
+</html>
