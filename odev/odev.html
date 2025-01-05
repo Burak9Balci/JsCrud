@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      .download-button {
+        background-color: green;
+        color: white;
+        padding: 5px 20px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .paid {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" class="btn" id="btn">Tıklayın</button>
+    <div class="text" id="dv">Değiştirin</div>
+
+    <script>
+      // Buton tıklanmasıyla, Reddit'ten sevimli yavru köpeklerin görsellerini almak için bir AJAX isteği yapacağız. İsteğin başarılı olması durumunda, dönen verilerden her bir element için bir <img> elementi oluşturup belirli bir alana ekleyeceğiz.
+
+      // Butona tıklanma olayı için bir dinleyici ekleyin.
+      // Butona tıklandığında, Reddit'teki sevimli yavru köpeklerin sonuçları için bir AJAX isteği yapın. İstek URL'si: https://www.reddit.com/r/aww/search.json?q=puppy&restrict_sr=true
+      // Dönen verilerden data.children içindeki her bir element için, child.data.thumbnail değerini kullanarak yeni bir <img> elementi oluşturun ve bunu belirli bir alana ekleyin.
+      btn.addEventListener("click", () => {
+        fetch(
+          "https://www.reddit.com/r/aww/search.json?q=puppy&restrict_sr=true"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            data.data.children.forEach((child) => {
+              const thumbnail = child.data.thumbnail;
+              if (thumbnail && thumbnail.startsWith("https")) {
+                const img = document.createElement("img");
+                img.src = thumbnail;
+                dv.appendChild(img);
+              }
+            });
+          });
+      });
+    </script>
+  </body>
+</html>

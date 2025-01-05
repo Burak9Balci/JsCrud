@@ -23,6 +23,10 @@ let newFullName = fullName.replace("Gözüm", "Balcı"); // İlk parametre deği
 console.log(newFullName);
 console.log("---------------------------");
 
+let string = "Araba Sürmek";
+console.log(string.replaceAll(" ", "  ")); // replaceAll
+console.log("---------------------------");
+
 let isIncludes = array.includes(5);
 console.log(isIncludes);
 console.log("---------------------------");
