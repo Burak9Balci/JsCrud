@@ -114,8 +114,7 @@ if (btnGo !== null) {
 }
 
 if (btnPut !== null) {
-  btnPut.addEventListener("click", async (event) => {
-    event.preventDefault();
+  btnPut.addEventListener("click", async () => {
     const name = nameInput.value.trim();
     const desc = descriptionInput.value.trim();
     if (!name || !desc) {
@@ -151,8 +150,7 @@ function Cleaner() {
   descriptionInput.value = "";
 }
 if (btnPost !== null) {
-  btnPost.addEventListener("click", async (event) => {
-    event.preventDefault();
+  btnPost.addEventListener("click", async () => {
     const name = nameInput.value.trim();
     const description = descriptionInput.value.trim();
     if (!name || !description) {
