@@ -3,9 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Put</title>
+    <link rel="stylesheet" href="CrudDesign.css" />
   </head>
   <body>
-    <script></script>
+    <form>
+      <input type="hidden" id="hidden" />
+      <label for="Name">Güncellenicek Category İsmi</label>
+      <input type="text" id="Name" />
+      <label for="Description">Güncellenicek Category Açıklaması</label>
+      <input type="text" id="Description" />
+      <button id="güncelle" type="button">Güncelle</button>
+      <p id="feedback"></p>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="CrudOptions.js"></script>
   </body>
 </html>

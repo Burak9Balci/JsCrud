@@ -3,50 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      body {
-        display: flex;
-        justify-content: center; /* Yatay ortalama */
-        align-items: center; /* Dikey ortalama */
-        height: 100vh; /* Tam ekran yüksekliği */
-        margin: 0;
-      }
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        background: rgb(49, 155, 72);
-        padding: 20px;
-        border: 5px solid black;
-        border-radius: 10px;
-      }
-      button {
-        background-color: white;
-        border: 2px solid black;
-        padding: 10px;
-        cursor: pointer;
-        transition: background-color 0.5s;
-      }
-      button:hover {
-        background-color: #b91919;
-      }
-      #feedback {
-        margin-top: 10px;
-        text-align: center;
-        font-weight: bold;
-      }
-    </style>
+    <title>Post</title>
+    <link rel="stylesheet" href="CrudDesign.css" />
   </head>
   <body>
-    <form method="post">
+    <form>
       <label for="Name">Category İsmi</label>
       <input type="text" id="Name" />
       <label for="Description">Category Açıklaması</label>
       <input type="text" id="Description" />
       <button id="ekleme" type="button">Ekleme Yap</button>
+      <p id="feedback"></p>
     </form>
-    <p id="feedback"></p>
-    <script></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="CrudOptions.js"></script>
   </body>
 </html>

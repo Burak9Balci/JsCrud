@@ -3,15 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Base</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/tabulator-tables@5.5.1/dist/css/tabulator.min.css"
     />
+    <style>
+      #btnGo {
+        width: 500px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+      }
+    </style>
   </head>
   <body>
     <main>
-      <div></div>
+      <div id="categoriesTable"></div>
+      <button id="btnGo">Ekleme Yapmak için Tıkla</button>
     </main>
     <script src="https://unpkg.com/tabulator-tables@5.5.1/dist/js/tabulator.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

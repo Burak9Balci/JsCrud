@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  justify-content: center; /* Yatay ortalama */
+  align-items: center; /* Dikey ortalama */
+  height: 100vh; /* Tam ekran yüksekliği */
+  margin: 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgb(49, 155, 72);
+  padding: 20px;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+button {
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+#ekleme:hover {
+  background-color: #1e8fd1;
+}
+
+input {
+  border-radius: 10px;
+}
+#btnGo {
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+#güncelle:hover {
+  background-color: #e0d423;
+}
+#feedback {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
