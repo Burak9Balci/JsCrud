@@ -1,22 +1,27 @@
-/*
-DownloadButton işaretlemesinin butonun metnini ve class'ını değiştirmek için ternary operator'ü kullanalım
-Eğer props.isPaid değeri true ise:
- - Butonun metni "Şimdi Satın Al" olacak.
- - Butonun class'ı ".paid" olacak ve bu sayede özelleştirilmiş bir stil uygulanabilir.
-Eğer props.isPaid değeri false ise:
- - Butonun metni "Ücretsiz İndirin" olacak.
- - Butonun arka planı yeşil olacak. Bu durum için farklı bir stil uygulanacak.
- */
+// Challenge 52
+// Tekrar Etmeyen İlk Karakter
+// Argüman olarak bir str string'i alan findCharacter(str) fonksiyonunu yazın. Fonksiyon tekrar etmeyen ilk karakteri döndürmelidir.
 
-function DownloadButton(props) {
-  return `
-    <button class="download-button">
-      <span>Ücretsiz İndirin</span>
-    </button>
-  `;
-}
+// Böyle bir karakter bulunamazsa null döndürülür.
+// Girilen stringi str boşluk içermeyecektir.
 
-const appDiv = document.getElementById("app");
-appDiv.innerHTML = DownloadButton({
-  isPaid: true,
-});
+/* =========== *
+ * Challenge 52 *
+ * ============ */
+
+const findCharacter = (str) => {
+  // Kodunuzu buraya yazın
+
+  str.split().reduce((acc, item) => {
+    if (acc === item) {
+      acc = null;
+      return acc;
+    } else {
+      console.log(str);
+    }
+  }, str[0]);
+};
+
+findCharacter("hello"); // "h"
+findCharacter("aabbcddee"); // "c"
+findCharacter("aabbcc"); // null
