@@ -121,20 +121,7 @@ class Category extends BaseEntity {
 
 async function getNorthWindCategories() {
   const categories = await api.getAll();
-  const hizalar = categories.map(
-    (category) => `
-    <tr>
-     <td>${category.id}</td> 
-     <td>${category.name}</td> 
-     <td>${category.description}</td> 
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td><input type="checkbox" value="${category.id}" /></td>
-    </tr> `
-  );
-  tbody.innerHTML = hizalar.join("");
+  form(categories);
 }
 
 async function addNorthWindCategory() {
