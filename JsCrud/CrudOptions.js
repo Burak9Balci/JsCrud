@@ -232,17 +232,17 @@ function Cleaner() {
   if (btnPut !== null) btnPut.style.display = "none";
 }
 
-async function filterCatergory(event) {
-  const newValue = event.target.value; // eventi uyguladığımız elementin değerini yakaladık
-  const categories = await api.getAll();
-  Array.from(categories);
-}
-async function sortName() {
-  const categories = await api.getAll();
-  const categorysObjs = Array.from(categories).sort((a, b) =>
-    a.name.localeCompare(b.name, "und", { sensitivity: "base" })
+async function filterCategory() {
+  const categories = await api.getAll(); // API'den tüm kategorileri aldıö
+
+  //filitreleme yaptım
+  const filteredCategories = categories.filter((category) =>
+    category.name.toLowerCase().includes(textBox.value.toLowerCase())
   );
-  const hizalar = categorysObjs.map(
+  form(filteredCategories);
+}
+function form(array) {
+  const hizalar = array.map(
     (category) => `
     <tr>
      <td>${category.id}</td> 
@@ -256,6 +256,15 @@ async function sortName() {
     </tr> `
   );
   tbody.innerHTML = hizalar.join("");
+}
+// Filtrelenmiş kategorileri sayfada göstermek için bir fonksiyon
+
+async function sortName() {
+  const categories = await api.getAll();
+  const categorysObjs = Array.from(categories).sort((a, b) =>
+    a.name.localeCompare(b.name, "und", { sensitivity: "base" })
+  );
+  form(categorysObjs);
 }
 
 async function sortDesc() {
@@ -263,20 +272,7 @@ async function sortDesc() {
   const sortedDescs = Array.from(categories).sort((a, b) =>
     a.description.localeCompare(b.description, "und", { sensitivity: "base" })
   );
-  const hizalar = sortedDescs.map(
-    (category) => `
-    <tr>
-     <td>${category.id}</td> 
-     <td>${category.name}</td> 
-     <td>${category.description}</td> 
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td><input type="checkbox" value="${category.id}" /></td>
-    </tr> `
-  );
-  tbody.innerHTML = hizalar.join("");
+  form(sortedDescs);
 }
 //Eventfonksionları bitiş
 
@@ -300,7 +296,7 @@ if (btnPut !== null) btnPut.addEventListener("click", updateNorthWindCategory);
 
 if (btnPost !== null) btnPost.addEventListener("click", addNorthWindCategory);
 
-if (textBox !== null) textBox.addEventListener("input", filterCatergory);
+if (textBox !== null) textBox.addEventListener("input", filterCategory);
 
 if (thDesc !== null) thDesc.addEventListener("click", sortDesc);
 
