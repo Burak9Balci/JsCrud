@@ -220,12 +220,17 @@ function Cleaner() {
 }
 
 async function filterCategory() {
+  document.getElementById("selector").textContent =
+    "İşlem yapmak istediğiniz veriyi seçiniz";
   const categories = await api.getAll(); // API'den tüm kategorileri aldıö
 
   //filitreleme yaptım
   const filteredCategories = categories.filter((category) =>
     category.name.toLowerCase().includes(textBox.value.toLowerCase())
   );
+  if (filteredCategories.length === 0)
+    document.getElementById("selector").textContent =
+      "Lütfen geçerli bir Category ismi i Yazınız";
   form(filteredCategories);
 }
 function form(array) {
