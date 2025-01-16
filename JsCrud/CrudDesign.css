@@ -52,3 +52,26 @@ input {
   text-align: center;
   font-weight: bold;
 }
+#btnGo1:hover {
+  transition: 0.3s;
+  background-color: #0d6efd;
+}
+
+#btnGo2:hover {
+  transition: 0.3s;
+  background-color: #ffc107;
+}
+
+#delete:hover {
+  transition: 0.3s;
+  background-color: #dc3545;
+}
+/* 
+@media (max-width: 360px) {
+  th,
+  td {
+    border: 1px solid black;
+    padding: 200px;
+    text-align: center;
+  }
+} */

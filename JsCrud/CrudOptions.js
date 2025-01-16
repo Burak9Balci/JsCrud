@@ -8,6 +8,9 @@ const btnAdd = document.getElementById("btnGo1");
 const btnUpdate = document.getElementById("btnGo2");
 const labels = document.querySelectorAll("form label");
 const tbody = document.getElementById("doldur");
+const textBox = document.getElementById("search");
+const thDesc = document.getElementById("description");
+const thName = document.getElementById("categoryName");
 
 const btnDelete = document.getElementById("delete");
 
@@ -81,7 +84,7 @@ class APIConnectionService {
         method: "DELETE",
       });
       if (!response.ok) throw new Error(`Hata aldın ${response.status}`);
-      showFeedback(`Kategori silindi ID: ${id}`, "blue");
+      showFeedback(`Kategori silindi`, "blue");
       return response.status;
     } catch (error) {
       showFeedback(`Kategori silinirken hata ${error}`, "red");
@@ -229,6 +232,52 @@ function Cleaner() {
   if (btnPut !== null) btnPut.style.display = "none";
 }
 
+async function filterCatergory(event) {
+  const newValue = event.target.value; // eventi uyguladığımız elementin değerini yakaladık
+  const categories = await api.getAll();
+  Array.from(categories);
+}
+async function sortName() {
+  const categories = await api.getAll();
+  const categorysObjs = Array.from(categories).sort((a, b) =>
+    a.name.localeCompare(b.name, "und", { sensitivity: "base" })
+  );
+  const hizalar = categorysObjs.map(
+    (category) => `
+    <tr>
+     <td>${category.id}</td> 
+     <td>${category.name}</td> 
+     <td>${category.description}</td> 
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td><input type="checkbox" value="${category.id}" /></td>
+    </tr> `
+  );
+  tbody.innerHTML = hizalar.join("");
+}
+
+async function sortDesc() {
+  const categories = await api.getAll();
+  const sortedDescs = Array.from(categories).sort((a, b) =>
+    a.description.localeCompare(b.description, "und", { sensitivity: "base" })
+  );
+  const hizalar = sortedDescs.map(
+    (category) => `
+    <tr>
+     <td>${category.id}</td> 
+     <td>${category.name}</td> 
+     <td>${category.description}</td> 
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td><input type="checkbox" value="${category.id}" /></td>
+    </tr> `
+  );
+  tbody.innerHTML = hizalar.join("");
+}
 //Eventfonksionları bitiş
 
 //_________________________________________________---------------------------------------------------------------------------------____________________________________________________________________________________
@@ -251,4 +300,9 @@ if (btnPut !== null) btnPut.addEventListener("click", updateNorthWindCategory);
 
 if (btnPost !== null) btnPost.addEventListener("click", addNorthWindCategory);
 
+if (textBox !== null) textBox.addEventListener("input", filterCatergory);
+
+if (thDesc !== null) thDesc.addEventListener("click", sortDesc);
+
+if (thName !== null) thName.addEventListener("click", sortName);
 //Eventler bitiş // ________________________________-------------------------------------------------------------------------------_____________________________________________________________________________________
