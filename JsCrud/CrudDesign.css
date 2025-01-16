@@ -5,9 +5,7 @@ body {
   height: 100vh; /* Tam ekran yüksekliği */
   margin: 0;
 }
-::selection {
-  background-color: #e0d423;
-}
+
 form {
   display: flex;
   flex-direction: column;
@@ -33,6 +31,14 @@ td {
   padding: 8px;
   text-align: center;
 }
+#feedback {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+input {
+  border-radius: 10px;
+}
 th {
   background-color: #f2f2f2;
 }
@@ -41,17 +47,10 @@ th {
   background-color: #1e8fd1;
 }
 
-input {
-  border-radius: 10px;
-}
 #güncelle:hover {
   background-color: #e0d423;
 }
-#feedback {
-  margin-top: 10px;
-  text-align: center;
-  font-weight: bold;
-}
+
 #btnGo1:hover {
   transition: 0.3s;
   background-color: #0d6efd;
@@ -66,12 +65,39 @@ input {
   transition: 0.3s;
   background-color: #dc3545;
 }
-/* 
-@media (max-width: 360px) {
+::selection {
+  background-color: #e0d423;
+}
+
+@media (max-width: 700px) {
   th,
   td {
     border: 1px solid black;
-    padding: 200px;
+    padding: 5px;
     text-align: center;
+    font-size: 9.5px;
   }
-} */
+  button {
+    background-color: white;
+    border: 2px solid black;
+    padding: 3px;
+  }
+
+  #btnGo1:hover {
+    transition: 0.3s;
+    background-color: #0d6efd;
+  }
+
+  #btnGo2:hover {
+    transition: 0.3s;
+    background-color: #ffc107;
+  }
+
+  #delete:hover {
+    transition: 0.3s;
+    background-color: #dc3545;
+  }
+  ::selection {
+    background-color: #e0d423;
+  }
+}
